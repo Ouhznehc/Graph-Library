@@ -45,14 +45,14 @@ std::optional<int> DepthFirstSearcher<TGraph>::dfsPredicate(const TGraph *graph,
 template <typename TGraph>
 void DepthFirstSearcher<TGraph>::VisitAllVertices(const TGraph *graph, int start, std::function<void(int)> action){
   if(!graph->ContainsVertex(start))return;
-  std::map<int,bool>visit;
+  std::map<int,bool>visit; visit.clear();
   dfsAction(graph, start, &visit, action);
 }
 
 template <typename TGraph>
 std::optional<int> DepthFirstSearcher<TGraph>::FindFirstVertex(const TGraph *graph, int start, std::function<bool(int)> predicate){
   if(!graph->ContainsVertex(start))return std::nullopt;
-  std::map<int,bool>visit;
+  std::map<int,bool>visit; visit.clear();
   return dfsPredicate(graph, start, &visit, predicate);
 }
 #endif
