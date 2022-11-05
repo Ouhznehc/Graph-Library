@@ -2,7 +2,6 @@
 #define UNDIRECTED_WEIGHTED_GRAPH_H
 
 #include <DataStructures/WeightedGraph.h>
-using namespace std;
 
 template <typename weightType>
 class UndirectedWeightedGraph : public WeightedGraph<weightType>
@@ -38,8 +37,8 @@ class UndirectedWeightedGraph : public WeightedGraph<weightType>
             return (WeightedGraph<weightType>::CountEdges() + trival_circle_num) / 2;
         }
 
-        vector<WeightedEdge<weightType>> GetEdges() const{
-            vector<WeightedEdge<weightType>> ans;
+        std::vector<WeightedEdge<weightType>> GetEdges() const{
+            std::vector<WeightedEdge<weightType>> ans;
             for(auto i = WeightedGraph<weightType>::WeightedEdges.begin(); i != WeightedGraph<weightType>::WeightedEdges.end(); i++){
                 ans.push_back(*i);
                 if(i->GetSource() != i->GetDestination()) i++;

@@ -4,7 +4,6 @@
 #include "WeightedEdge.h"
 #include "DataStructures/Graph.h"
 #include <bits/stdc++.h>
-using namespace std;
 
 template <typename weightType>
 class WeightedGraph : public Graph
@@ -30,15 +29,15 @@ class WeightedGraph : public Graph
             return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, 0))->GetWeight();
         }
 
-        vector<WeightedEdge<weightType>> GetEdges() const{
-            vector<WeightedEdge<weightType>> edges;
+        std::vector<WeightedEdge<weightType>> GetEdges() const{
+            std::vector<WeightedEdge<weightType>> edges;
             for(auto it: WeightedEdges)
                 edges.push_back(it);
             return edges;
         }
 
-        vector<WeightedEdge<weightType>> GetIncomingEdges(int vertex) const{
-            vector<WeightedEdge<weightType>> null;
+        std::vector<WeightedEdge<weightType>> GetIncomingEdges(int vertex) const{
+            std::vector<WeightedEdge<weightType>> null;
             if(IncomingEdges.find(vertex) != IncomingEdges.end()){
                 for(auto it : IncomingEdges.at(vertex)){
                     auto tmp = WeightedEdge<weightType>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination()));
@@ -48,8 +47,8 @@ class WeightedGraph : public Graph
             return null;
         }
 
-        vector<WeightedEdge<weightType>> GetOutgoingEdges(int vertex) const{
-            vector<WeightedEdge<weightType>> null;
+        std::vector<WeightedEdge<weightType>> GetOutgoingEdges(int vertex) const{
+            std::vector<WeightedEdge<weightType>> null;
             if(OutgoingEdges.find(vertex) != OutgoingEdges.end()){
                 for(auto it : OutgoingEdges.at(vertex)){
                     auto tmp = WeightedEdge<weightType>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination()));
@@ -60,7 +59,7 @@ class WeightedGraph : public Graph
         }
         
     protected:
-        set<WeightedEdge<weightType>> WeightedEdges;
+        std::set<WeightedEdge<weightType>> WeightedEdges;
 
 };
 

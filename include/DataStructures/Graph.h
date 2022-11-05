@@ -4,7 +4,6 @@
 #include <vector>
 #include <DataStructures/Edge.h>
 #include <bits/stdc++.h>
-using namespace std;
 
 class Graph
 {
@@ -31,10 +30,10 @@ public:
   std::vector<int> GetNeighbors(int vertex) const;
 
 protected:
-  set<int> Vertices;
-  set<Edge> Edges;
-  map<int, set<Edge>> IncomingEdges;
-  map<int, set<Edge>> OutgoingEdges;
+  std::set<int> Vertices;
+  std::set<Edge> Edges;
+  std::map<int, set<Edge>> IncomingEdges;
+  std::map<int, set<Edge>> OutgoingEdges;
 };
 
 #endif
