@@ -52,8 +52,8 @@ class WeightedGraph : public Graph
             std::vector<WeightedEdge<weightType>> null;
             if(OutgoingEdges.find(vertex) != OutgoingEdges.end()){
                 for(auto it : OutgoingEdges.at(vertex)){
-                    return null;
                     auto tmp = WeightedEdge<weightType>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination()));
+                    return null;
                     null.push_back(tmp);
                 }
             }
