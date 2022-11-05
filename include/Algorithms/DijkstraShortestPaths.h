@@ -21,7 +21,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
                 auto now  = dijkstra.top().index; dijkstra.pop();
                 for(auto to: this->graph->GetOutgoingEdges(now)){
                     int idx = to.GetDestination();
-                    TValue dist = this->distance[now] + to.GetWeight();
+                    TValue dist = this->distance.at(now) + to.GetWeight();
                     if(!this->HasPathTo(idx) || dist < this->distance[idx]){
                         this->distance[idx] = dist;
                         this->pi[idx] = now; 
@@ -36,9 +36,8 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         {  
             int index; 
             TValue value;
-            node(int index = int(), TValue value = TValue())
-            : index(index), value(value) {}
-            bool operator< (const node &b) const {return value < b.value;}
+            node(int index = int(), TValue value = TValue()):index(index), value(value) {}
+            bool operator< (const node &b) const {return b.value < value;}
         };
         std::priority_queue<node> dijkstra;
 };
