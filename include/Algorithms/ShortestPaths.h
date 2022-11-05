@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <optional>
+#include <DataStructures/WeightedGraph.h>
+#include <DataStructures/UndirectedWeightedGraph.h>
+#include <bits/stdc++.h>
 
 template <template<typename> class TGraph, typename TValue>
 class ShortestPaths {
@@ -14,6 +17,10 @@ class ShortestPaths {
   bool HasPathTo(int destination) const;
   std::optional<TValue> TryGetDistanceTo(int destination) const;
   std::optional<std::vector<int>> TryGetShortestPathTo(int destination) const;
+  protected:
+    std::unordered_map<int, TValue> distance;
+    std::unordered_map<int, int> pi;
 };
 
 #endif
+
