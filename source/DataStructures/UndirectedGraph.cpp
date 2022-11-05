@@ -30,8 +30,8 @@ int UndirectedGraph:: CountEdges() const {
     return (Graph::CountEdges() + trival_circle_num) / 2;
 }
 
-vector<Edge> UndirectedGraph::GetEdges() const {
-    vector<Edge> ans;
+std::vector<Edge> UndirectedGraph::GetEdges() const {
+    std::vector<Edge> ans;
     for(auto i = Edges.begin(); i != Edges.end(); i++){
         ans.push_back(*i);
         if(i->GetSource() != i->GetDestination()) i++;
