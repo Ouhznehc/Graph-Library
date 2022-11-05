@@ -9,7 +9,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
 {
     public:
         DijkstraShortestPaths(const TGraph<TValue> *Graph, int source)
-        : ShortestPaths<TGraph, TValue>(graph, source)
+        : ShortestPaths<TGraph, TValue>(Graph, source)
         , dijkstra()
         {
             if(!this->graph->ContainsVertex(source)) return;
