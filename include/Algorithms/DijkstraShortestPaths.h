@@ -13,7 +13,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         , dijkstra()
         {
             if(this->graph->ContainsVertex(this->source)) return;
-            unordered_set<int> visit;
+            unordered_multiset<int> visit;
             while(dijkstra.size()) dijkstra.pop();
             this->distance.clear();
             this->pi.clear();
