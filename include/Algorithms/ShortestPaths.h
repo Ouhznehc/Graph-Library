@@ -24,12 +24,12 @@ class ShortestPaths {
   {
     if(!HasPathTo(destination)) return std::nullopt;
     std::vector<int> res;
-    while(destination != source){
-      res.push_back(destination);
-      destination = pi.at(destination);
-    }
-    res.push_back(source);
-    std::reverse(res.begin(), res.end());
+    // while(destination != source){
+    //   res.push_back(destination);
+    //   destination = pi.at(destination);
+    // }
+    // res.push_back(source);
+    // std::reverse(res.begin(), res.end());
     return std::optional<std::vector<int>>(res);
   }
   protected:
