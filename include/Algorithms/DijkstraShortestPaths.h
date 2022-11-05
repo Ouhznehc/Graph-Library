@@ -30,7 +30,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
                 }
             }
         }
-        ~DijkstraShortestPaths(){}
+        ~DijkstraShortestPaths(){~ShortestPaths();}
     private:
         struct node 
         {  
