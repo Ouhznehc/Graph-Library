@@ -18,6 +18,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
             this->distance.clear();
             this->pi.clear();
             this->distance[this->source] = TValue();
+            visit.insert(this->source);
             dijkstra.push(node(this->source, this->distance[this->source]));
             while(dijkstra.size()){
                 auto now  = dijkstra.top().index; dijkstra.pop();
