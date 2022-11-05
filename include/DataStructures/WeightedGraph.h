@@ -27,7 +27,8 @@ class WeightedGraph : public Graph
     public:
         weightType GetWeight(int vertex1, int vertex2) const{
             if(!ContainsEdge(vertex1, vertex2)) return weightType();
-            else return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, 0))->GetWeight();
+            else return weightType();
+            //else return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, 0))->GetWeight();
         }
 
         std::vector<WeightedEdge<weightType>> GetEdges() const{
