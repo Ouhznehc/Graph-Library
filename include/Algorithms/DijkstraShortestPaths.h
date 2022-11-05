@@ -19,7 +19,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
             this->pi.clear();
             this->distance[this->source] = TValue();
             visit.insert(this->source);
-            dijkstra.insert(node(this->source, this->distance[this->source]));
+            dijkstra.push(node(this->source, this->distance[this->source]));
             while(dijkstra.size()){
                 auto now  = dijkstra.top().index; dijkstra.pop();
                 for(auto to: this->graph->GetOutgoingEdges(now)){
@@ -29,7 +29,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
                         this->distance[idx] = dist;
                         this->pi[idx] = now; 
                         visit.insert(idx);
-                        dijkstra.insert(node(idx, dist));
+                        dijkstra.push(node(idx, dist));
                     }
                 }
             }
