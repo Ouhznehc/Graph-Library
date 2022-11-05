@@ -29,7 +29,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
                         this->distance[idx] = dist;
                         this->pi[idx] = now; 
                         visit.insert(idx);
-                        dijkstra.push(node(idx, this->distance[idx]));
+                        dijkstra.push(node(idx, dist));
                     }
                 }
             }
