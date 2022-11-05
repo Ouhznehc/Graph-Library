@@ -27,7 +27,7 @@ class WeightedGraph : public Graph
     public:
         weightType GetWeight(int vertex1, int vertex2) const{
             if(WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, 0)) == WeightedEdges.end()) return weightType();
-            else return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, 0))->GetWeight();
+            else return WeightedEdges.at(WeightedEdge<weightType>(vertex1, vertex2, 0))->GetWeight();
         }
 
         std::vector<WeightedEdge<weightType>> GetEdges() const{
@@ -53,7 +53,6 @@ class WeightedGraph : public Graph
             if(OutgoingEdges.find(vertex) != OutgoingEdges.end()){
                 for(auto it : OutgoingEdges.at(vertex)){
                     auto tmp = WeightedEdge<weightType>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination()));
-                    return null;
                     null.push_back(tmp);
                 }
             }
