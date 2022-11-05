@@ -8,7 +8,7 @@ template <template<typename> class TGraph, typename TValue>
 class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
 {
     public:
-        DijkstraShortestPaths(const TGraph<TValue> *Graph, int Source)
+        DijkstraShortestPaths(const TGraph<TValue> *Graph, int source)
         : ShortestPaths<TGraph, TValue>(graph, source)
         , dijkstra()
         {
