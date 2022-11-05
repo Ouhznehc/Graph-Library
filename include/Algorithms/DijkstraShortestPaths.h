@@ -14,18 +14,18 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         {
             if(!graph->ContainsVertex(source)) return;
             while(dijkstra.size()) dijkstra.pop();
-            distance.clear();
-            distance[source] = TValue();
+            this->distance.clear();
+            this->distance[source] = TValue();
             dijkstra.push(node(source, distance[source]));
             while(dijkstra.size()){
                 auto now  = dijkstra.top().index; dijkstra.pop();
                 for(auto to: graph->GetOutgoingEdges(now)){
                     int idx = to.GetDestination();
-                    TValue dist = distance[now] + to.GetWeight();
-                    if(!HasPathTo(idx) || dist < distance[now]){
+                    TValue dist = this->distance[now] + to.GetWeight();
+                    if(!HasPathTo(idx) || dist < this->distance[idx]){
                         distance[idx] = dist;
                         pi[idx] = now; 
-                        dijkstra.push(node(idx, distance[idx]));
+                        dijkstra.push(node(idx, this->distance[idx]));
                     }
                 }
             }
