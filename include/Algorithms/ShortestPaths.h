@@ -24,7 +24,6 @@ class ShortestPaths {
   {
     if(!HasPathTo(destination)) return std::nullopt;
     std::vector<int> res;
-    res.clear();
     while(destination != source){
       res.push_back(destination);
       destination = pi.at(destination);
