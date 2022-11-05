@@ -13,12 +13,9 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         , dijkstra()
         {  
             if(!this->graph->ContainsVertex(this->source)) return;
-            while(dijkstra.size()) dijkstra.pop();
-            this->distance.clear();
-            this->pi.clear();
-//            this->pi[this->source] = this->source;
+            this->pi[this->source] = this->source;
             this->distance[this->source] = TValue();
-            dijkstra.push(node(this->source, this->distance[this->source]));
+            dijkstra.push(node(this->source, TValue()));
             while(dijkstra.size()){
                 auto now = dijkstra.top().index; dijkstra.pop();
                 for(auto to: this->graph->GetOutgoingEdges(now)){
