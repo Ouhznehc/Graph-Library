@@ -22,7 +22,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
             dijkstra.push(node(this->source, this->distance[this->source]));
             while(dijkstra.size()){
                 auto now  = dijkstra.top().index; dijkstra.pop();
-                if(visit.at(now)) continue;
+                if(visit.find(now) != visit.end()) continue;
                 visit[now] = true;
                 for(auto to: this->graph->GetOutgoingEdges(now)){
                     int idx = to.GetDestination();
