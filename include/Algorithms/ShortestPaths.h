@@ -17,7 +17,6 @@ class ShortestPaths {
   bool HasPathTo(int destination) const {return distance.find(destination) != distance.end();}
   std::optional<TValue> TryGetDistanceTo(int destination) const
   {
-    return std::nullopt;
     if(!HasPathTo(destination)) return std::nullopt;
     else return std::optional<TValue>(distance.at(destination));
   }
