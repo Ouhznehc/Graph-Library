@@ -18,7 +18,7 @@ class ShortestPaths {
   std::optional<TValue> TryGetDistanceTo(int destination) const
   {
     if(!HasPathTo(destination)) return std::nullopt;
-    else return distance[destination];
+    else return distance.at(destination);
   }
   std::optional<std::vector<int>> TryGetShortestPathTo(int destination) const
   {
@@ -26,7 +26,7 @@ class ShortestPaths {
     std::vector<int> res;
     while(destination != source){
       res.push_back(destination);
-      destination = pi[destination];
+      destination = pi.at(destination);
     }
     std::reverse(res.begin(), res.end());
     return std::optional<std::vector<int>>(res);
