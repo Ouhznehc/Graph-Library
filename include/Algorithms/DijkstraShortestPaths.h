@@ -16,6 +16,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
             while(dijkstra.size()) dijkstra.pop();
 
         }
+        ~DijkstraShortestPaths(){}
     private:
         struct node 
         {  
