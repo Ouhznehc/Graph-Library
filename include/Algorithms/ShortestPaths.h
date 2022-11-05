@@ -11,7 +11,7 @@ template <template<typename> class TGraph, typename TValue>
 class ShortestPaths {
  public:
   ShortestPaths() = delete;
-  ShortestPaths(const TGraph<TValue> *graph, int source):source(source), distance(), pi(){}
+  ShortestPaths(const TGraph<TValue> *graph, int source):source(source), graph(graph), distance(), pi(){}
   virtual ~ShortestPaths(){}
  public:
   bool HasPathTo(int destination) const {return distance.find(destination) != distance.end();}
@@ -24,6 +24,7 @@ class ShortestPaths {
   {
     if(!HasPathTo(destination)) return std::nullopt;
     std::vector<int> res;
+    res.clear();
     while(destination != source){
       res.push_back(destination);
       destination = pi.at(destination);
@@ -34,6 +35,7 @@ class ShortestPaths {
   protected:
     std::unordered_map<int, TValue> distance;
     std::unordered_map<int, int> pi;
+    const TGraph<TValue> *graph;
     int source;
 };
 
