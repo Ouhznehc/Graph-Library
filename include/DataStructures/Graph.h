@@ -32,8 +32,8 @@ public:
 protected:
   std::set<int> Vertices;
   std::set<Edge> Edges;
-  std::map<int, set<Edge>> IncomingEdges;
-  std::map<int, set<Edge>> OutgoingEdges;
+  std::map<int, std::set<Edge>> IncomingEdges;
+  std::map<int, std::set<Edge>> OutgoingEdges;
 };
 
 #endif
