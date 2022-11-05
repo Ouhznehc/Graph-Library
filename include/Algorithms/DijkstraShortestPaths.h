@@ -17,8 +17,8 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
             this->distance[this->source] = TValue();
             dijkstra.push(node(this->source, TValue()));
             while(dijkstra.size()){
-                return;
                 auto now = dijkstra.top().index; dijkstra.pop();
+                return;
                 for(auto to: this->graph->GetOutgoingEdges(now)){
                     int idx = to.GetDestination();
                     TValue dist = this->distance[now] + to.GetWeight();
