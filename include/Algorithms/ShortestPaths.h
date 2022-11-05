@@ -29,6 +29,7 @@ class ShortestPaths {
       res.push_back(destination);
       destination = pi.at(destination);
     }
+    res.push_back(source);
     std::reverse(res.begin(), res.end());
     return std::optional<std::vector<int>>(res);
   }

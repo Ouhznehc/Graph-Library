@@ -11,7 +11,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         DijkstraShortestPaths(const TGraph<TValue> *Graph, int Source)
         : ShortestPaths<TGraph, TValue>(Graph, Source)
         , dijkstra()
-        {
+        {  
             if(!this->graph->ContainsVertex(this->source)) return;
             while(dijkstra.size()) dijkstra.pop();
             this->distance.clear();
