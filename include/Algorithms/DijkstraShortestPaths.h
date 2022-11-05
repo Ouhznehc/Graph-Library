@@ -13,7 +13,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         , dijkstra()
         {
             if(this->graph->ContainsVertex(this->source)) return;
-            set<int> visit;
+            std::set<int> visit;
             while(dijkstra.size()) dijkstra.pop();
             this->distance.clear();
             this->distance[this->source] = TValue();
