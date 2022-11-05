@@ -1,8 +1,7 @@
 #ifndef DIJKSTRA_SHORTEST_PATHS
 #define DIJKSTRA_SHORTEST_PATHS
 
-#include <bits/stdc++.h>
-#include <ShortestPaths.h>
+#include "ShortestPaths.h"
 
 
 template <template<typename> class TGraph, typename TValue>
@@ -14,7 +13,8 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         , dijkstra()
         {
             if(!graph->ContainsVertex(source)) return;
-            
+            while(dijkstra.size()) dijkstra.pop();
+
         }
     private:
         struct node 
