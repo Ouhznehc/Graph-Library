@@ -12,22 +12,21 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         : ShortestPaths<TGraph, TValue>(Graph, Source)
         , dijkstra()
         {
-            if(this->graph->ContainsVertex(this->source)){
-                while(dijkstra.size()) dijkstra.pop();
-                this->distance.clear();
-                this->pi.clear();
-                this->distance[this->source] = TValue();
-                dijkstra.push(node(this->source, this->distance[this->source]));
-                while(dijkstra.size()){
-                    auto now  = dijkstra.top().index; dijkstra.pop();
-                    for(auto to: this->graph->GetOutgoingEdges(now)){
-                        int idx = to.GetDestination();
-                        TValue dist = this->distance.at(now) + to.GetWeight();
-                        if(!this->HasPathTo(idx) || dist < this->distance[idx]){
-                            this->distance[idx] = dist;
-                            this->pi[idx] = now; 
-                            dijkstra.push(node(idx, this->distance[idx]));
-                        }
+            if(this->graph->ContainsVertex(this->source)) return;
+            while(dijkstra.size()) dijkstra.pop();
+            this->distance.clear();
+            this->pi.clear();
+            this->distance[this->source] = TValue();
+            dijkstra.push(node(this->source, this->distance[this->source]));
+            while(dijkstra.size()){
+                auto now  = dijkstra.top().index; dijkstra.pop();
+                for(auto to: this->graph->GetOutgoingEdges(now)){
+                    int idx = to.GetDestination();
+                    TValue dist = this->distance.at(now) + to.GetWeight();
+                    if(!this->HasPathTo(idx) || dist < this->distance[idx]){
+                        this->distance[idx] = dist;
+                        this->pi[idx] = now; 
+                        dijkstra.push(node(idx, this->distance[idx]));
                     }
                 }
             }
