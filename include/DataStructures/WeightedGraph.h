@@ -28,9 +28,9 @@ class WeightedGraph : public Graph
         weightType GetWeight(int vertex1, int vertex2) const{
             if(WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, weightType())) == WeightedEdges.end()) return weightType();
             else{
-                auto edge = WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, weightType()));
-                return edge->GetWeight();
-                //return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, weightType()))->GetWeight();
+                // auto edge = WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, weightType()));
+                // return edge->GetWeight();
+                return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, weightType()))->GetWeight();
             }
         }
 
