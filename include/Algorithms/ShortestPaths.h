@@ -17,6 +17,7 @@ class ShortestPaths {
   bool HasPathTo(int destination) const {return distance.find(destination) != distance.end();}
   std::optional<TValue> TryGetDistanceTo(int destination) const
   {
+    return std::nullopt;
     if(!HasPathTo(destination)) return std::nullopt;
     else return std::optional<TValue>(distance.at(destination));
   }
@@ -24,12 +25,12 @@ class ShortestPaths {
   {
     if(!HasPathTo(destination)) return std::nullopt;
     std::vector<int> res;
-    // while(destination != source){
-    //   res.push_back(destination);
-    //   destination = pi.at(destination);
-    // }
-    // res.push_back(source);
-    // std::reverse(res.begin(), res.end());
+    while(destination != source){
+      res.push_back(destination);
+      destination = pi.at(destination);
+    }
+    res.push_back(source);
+    std::reverse(res.begin(), res.end());
     return std::optional<std::vector<int>>(res);
   }
   protected:
