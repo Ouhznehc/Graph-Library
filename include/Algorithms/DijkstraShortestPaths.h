@@ -16,7 +16,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
             while(dijkstra.size()) dijkstra.pop();
             this->distance.clear();
             this->distance[source] = TValue();
-            dijkstra.push(node(source, distance[source]));
+            dijkstra.push(node(source, this->distance[source]));
             while(dijkstra.size()){
                 auto now  = dijkstra.top().index; dijkstra.pop();
                 for(auto to: graph->GetOutgoingEdges(now)){
