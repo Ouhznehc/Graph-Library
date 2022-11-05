@@ -36,7 +36,7 @@ class ShortestPaths {
     std::unordered_map<int, TValue> distance;
     std::unordered_map<int, int> pi;
     const TGraph<TValue> *graph;
-    int source;
+    const int source;
 };
 
 #endif

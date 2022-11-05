@@ -13,17 +13,21 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         , dijkstra()
         {
             if(!this->graph->ContainsVertex(this->source)) return;
+            std::unordered_map<int, bool> visit;
             while(dijkstra.size()) dijkstra.pop();
             this->distance.clear();
             this->pi.clear();
             this->distance[this->source] = TValue();
+            visit[this->source] = true;
             dijkstra.push(node(this->source, this->distance[this->source]));
             while(dijkstra.size()){
                 auto now  = dijkstra.top().index; dijkstra.pop();
+                if(visit.at(now)) continue;
+                visit[now] = true;
                 for(auto to: this->graph->GetOutgoingEdges(now)){
                     int idx = to.GetDestination();
                     TValue dist = this->distance.at(now) + to.GetWeight();
-                    if(!this->HasPathTo(idx) || dist < this->distance[idx]){
+                    if(dist < this->distance[idx]){
                         this->distance[idx] = dist;
                         this->pi[idx] = now; 
                         dijkstra.push(node(idx, this->distance[idx]));
