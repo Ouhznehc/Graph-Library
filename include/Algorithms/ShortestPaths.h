@@ -12,7 +12,7 @@ class ShortestPaths {
  public:
   ShortestPaths() = delete;
   ShortestPaths(const TGraph<TValue> *graph, int source):source(source), distance(), pi(){}
-  virtual ~ShortestPaths();
+  virtual ~ShortestPaths(){}
  public:
   bool HasPathTo(int destination) const {return distance.find(destination) != distance.end();}
   std::optional<TValue> TryGetDistanceTo(int destination) const
