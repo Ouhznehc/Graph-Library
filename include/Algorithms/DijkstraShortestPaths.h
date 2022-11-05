@@ -13,6 +13,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         , dijkstra()
         {
             if(this->graph->ContainsVertex(this->source)) return;
+            unordered_set<int> visit;
             while(dijkstra.size()) dijkstra.pop();
             this->distance.clear();
             this->pi.clear();
@@ -23,9 +24,10 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
                 for(auto to: this->graph->GetOutgoingEdges(now)){
                     int idx = to.GetDestination();
                     TValue dist = this->distance[now] + to.GetWeight();
-                    if(!this->HasPathTo(idx) || dist < this->distance[idx]){
+                    if(visit.find(idx) == visit.end() || dist < this->distance[idx]){
                         this->distance[idx] = dist;
                         this->pi[idx] = now; 
+                        visit.insert(idx);
                         dijkstra.push(node(idx, this->distance[idx]));
                     }
                 }
