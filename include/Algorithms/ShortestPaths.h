@@ -29,7 +29,7 @@ class ShortestPaths {
       destination = pi[destination];
     }
     std::reverse(res.begin(), res.end());
-    return std::optional<std::vector<int>>res;
+    return std::optional<std::vector<int>>(res);
   }
   protected:
     std::unordered_map<int, TValue> distance;
