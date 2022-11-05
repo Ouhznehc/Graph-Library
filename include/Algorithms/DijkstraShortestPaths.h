@@ -12,7 +12,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         : ShortestPaths<TGraph, TValue>(Graph, Source)
         , dijkstra()
         {  
-            if(!this->graph->ContainsVertex(this->source)) return;
+        //    if(!this->graph->ContainsVertex(this->source)) return;
             while(dijkstra.size()) dijkstra.pop();
             this->distance.clear();
             this->pi.clear();
