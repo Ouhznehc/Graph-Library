@@ -20,22 +20,22 @@ bool Graph::ContainsEdge(int vertex1, int vertex2) const {
     return Edges.count(Edge(vertex1, vertex2));
 }
 
-vector<int> Graph::GetVertices() const {
-    vector<int> vertices;
+std::vector<int> Graph::GetVertices() const {
+    std::vector<int> vertices;
     for(auto it: Vertices)
         vertices.push_back(it);
     return vertices;
 }
 
-vector<Edge> Graph::GetEdges() const {
-    vector<Edge> edges;
+std::vector<Edge> Graph::GetEdges() const {
+    std::vector<Edge> edges;
     for(auto it: Edges)
         edges.push_back(it);
     return edges;
 }
 
-vector<Edge> Graph::GetIncomingEdges(int vertex) const {
-    vector<Edge> null;
+std::vector<Edge> Graph::GetIncomingEdges(int vertex) const {
+    std::vector<Edge> null;
     if(IncomingEdges.find(vertex) != IncomingEdges.end()){
         for(auto it : IncomingEdges.at(vertex))
             null.push_back(it);
@@ -43,8 +43,8 @@ vector<Edge> Graph::GetIncomingEdges(int vertex) const {
     return null;
 }
 
-vector<Edge> Graph::GetOutgoingEdges(int vertex) const {
-    vector<Edge> null;
+std::vector<Edge> Graph::GetOutgoingEdges(int vertex) const {
+    std::vector<Edge> null;
     if(OutgoingEdges.find(vertex) != OutgoingEdges.end()){
         for(auto it : OutgoingEdges.at(vertex))
             null.push_back(it);
@@ -58,8 +58,8 @@ int Graph::GetDegree(int vertex) const {
     else return 0;
 }
 
-vector<int> Graph::GetNeighbors(int vertex) const {
-    vector<int> neighbors;
+std::vector<int> Graph::GetNeighbors(int vertex) const {
+    std::vector<int> neighbors;
     if(OutgoingEdges.find(vertex) != OutgoingEdges.end())
         for(auto it: OutgoingEdges.find(vertex)->second)
             neighbors.push_back(it.GetDestination());
@@ -84,14 +84,14 @@ bool Graph::AddEdge(int vertex1, int vertex2){
     if(IncomingEdges.find(vertex2) != IncomingEdges.end())
         IncomingEdges.at(vertex2).insert(Edge(vertex1, vertex2));
     else{
-        set<Edge> edg;
+        std::set<Edge> edg;
         edg.insert(Edge(vertex1, vertex2));
         IncomingEdges.emplace(vertex2, edg);
     } 
     if(OutgoingEdges.find(vertex1) != OutgoingEdges.end())
         OutgoingEdges.at(vertex1).insert(Edge(vertex1, vertex2));
     else{
-        set<Edge> edg;
+        std::set<Edge> edg;
         edg.insert(Edge(vertex1, vertex2));
         OutgoingEdges.emplace(vertex1, edg);
     } 
