@@ -8,15 +8,15 @@ template <template<typename> class TGraph, typename TValue>
 class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
 {
     public:
-        DijkstraShortestPaths(const TGraph<TValue> *Graph, int source)
-        : ShortestPaths<TGraph, TValue>(Graph, source)
+        DijkstraShortestPaths(const TGraph<TValue> *Graph, int Source)
+        : ShortestPaths<TGraph, TValue>(Graph, Source)
         , dijkstra()
         {
-            if(!this->graph->ContainsVertex(source)) return;
+            if(!this->graph->ContainsVertex(this->source)) return;
             while(dijkstra.size()) dijkstra.pop();
             this->distance.clear();
-            this->distance[source] = TValue();
-            dijkstra.push(node(source, this->distance[source]));
+            this->distance[this->source] = TValue();
+            dijkstra.push(node(this->source, this->distance[this->source]));
             while(dijkstra.size()){
                 auto now  = dijkstra.top().index; dijkstra.pop();
                 for(auto to: this->graph->GetOutgoingEdges(now)){
