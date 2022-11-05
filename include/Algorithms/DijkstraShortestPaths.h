@@ -15,7 +15,6 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
             if(this->graph->ContainsVertex(this->source)) return;
             while(dijkstra.size()) dijkstra.pop();
             this->distance.clear();
-            this->pi.clear();
             this->distance[this->source] = TValue();
             dijkstra.push(node(this->source, this->distance[this->source]));
             while(dijkstra.size()){
