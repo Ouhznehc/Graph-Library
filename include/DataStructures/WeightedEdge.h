@@ -17,9 +17,7 @@ class WeightedEdge: public Edge
             return false;
         }
     public:
-        weightType GetWeight() const{
-            return this->weight;
-        }
+        weightType GetWeight() const{ return this->weight;}
     private:
         weightType weight;
 };
