@@ -9,7 +9,7 @@
 
 template <template<typename> class TGraph, typename TValue>
 class ShortestPaths {
-  static_assert(std::is_default_constructible_v<TValue> && std::is_default_constructible_v<TGraph>);
+  static_assert(std::is_default_constructible_v<TValue>);
  public:
   ShortestPaths() = delete;
   ShortestPaths(const TGraph<TValue> *graph, int source):source(source), graph(graph), distance(), pi(){}
