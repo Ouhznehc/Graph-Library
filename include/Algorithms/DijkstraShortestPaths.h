@@ -7,7 +7,6 @@
 template <template<typename> class TGraph, typename TValue>
 class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
 {
-    static_assert(std::is_default_constructible_v<TValue>);
     public:
         DijkstraShortestPaths(const TGraph<TValue> *Graph, int Source)
         : ShortestPaths<TGraph, TValue>(Graph, Source)
