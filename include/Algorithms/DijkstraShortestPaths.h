@@ -8,7 +8,7 @@ template <typename TGraph>
 class DijkstraShortestPaths : public ShortestPaths<TGraph>
 {
     static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TValue requires default constructor");
-    static_assert(std::is_same_v<TGraph> == WeightedGraph<typename TGraph::TValue> || (std::is_same_v<TGraph> == UndirectedWeightedGraph<typename TGraph::TValue>, "TGraph should be weighted");
+    static_assert(std::is_same_v<TGraph> == WeightedGraph || (std::is_same_v<TGraph> == UndirectedWeightedGraph, "TGraph should be weighted");
     public:
         DijkstraShortestPaths(const TGraph *Graph, int Source)
         : ShortestPaths<TGraph>(Graph, Source)
