@@ -5,6 +5,7 @@
 #include <DataStructures/Edge.h>
 #include <map>
 #include <queue>
+#include <set>
 
 class Graph
 {
