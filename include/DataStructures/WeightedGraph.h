@@ -9,6 +9,7 @@ template <typename weightType>
 class WeightedGraph : public Graph
 {
     public:
+        typedef weightType TValue;
         WeightedGraph(){};
         ~WeightedGraph(){};
     public:
@@ -61,7 +62,6 @@ class WeightedGraph : public Graph
         
     protected:
         std::set<WeightedEdge<weightType>> WeightedEdges;
-        typedef weightType TValue;
 
 };
 
