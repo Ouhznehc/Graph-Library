@@ -3,13 +3,16 @@
 
 #include "ShortestPaths.h"
 
+template <class T>
+inline constexpr bool is_addable = requires(T a, T b) {a+b;};
 
 template <typename TGraph>
 class DijkstraShortestPaths : public ShortestPaths<TGraph>
 {
     static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TValue requires default constructor");
     static_assert(std::is_same_v<TGraph, WeightedGraph<typename TGraph::TValue>> || std::is_same_v<TGraph, WeightedGraph<typename TGraph::TValue>>, "TGraph should be weighted");
-    static_assert(std::requires(TGraph::TValue a, TGraph::TValue b){a + b;}, "TValue requires operator+");
+    //static_assert(requires(TGraph::TValue a, TGraph::TValue b){a + b;}, "TValue requires operator+");
+    static_assert(is_addable<TGraph::TValue>, "TValue requires operator+");
     public:
         DijkstraShortestPaths(const TGraph *Graph, int Source)
         : ShortestPaths<TGraph>(Graph, Source)
