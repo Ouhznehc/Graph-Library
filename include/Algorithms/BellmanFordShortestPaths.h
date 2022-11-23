@@ -23,14 +23,13 @@ class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
                     int y = edge.GetDestination();
                     if(this->distance.find(y) == this->distance.end()){
                         this->distance[y] = this->distance[now] + edge.GetWeight();
-                        this->pre[y] = now;
-                        q.push(y);
-                        this->vis[y] = true;
+                        this->pi[y] = now;
+                        spfa.push(y);
                     }
-                    else if(this->d[y] > this->d[now] + ed.GetWeight()){
-                        this->d[y] = this->d[now] + ed.GetWeight();
-                        this->pre[y] = now;
-                        q.push(y);
+                    else if(this->distance[y] > this->distance[now] + edge.GetWeight()){
+                        this->distance[y] = this->distance[now] + edge.GetWeight();
+                        this->pi[y] = now;
+                        spfa.push(y);
                     }
                 }
             }
