@@ -6,7 +6,7 @@
 
 template<typename TGraph>
 class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
-    static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TGraph requires default-constructible elements");
+    static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TValue requires default constructor");
     public:
         BellmanFordShortestPaths(const TGraph *Graph, int Source)
             : ShortestPaths<TGraph>(Graph, Source){
