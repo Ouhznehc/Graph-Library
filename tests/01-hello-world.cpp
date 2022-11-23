@@ -17,7 +17,7 @@ struct sgsgsg{
 
 static void test1() {
 
-  auto *g = new WeightedGraph<int>();
+  auto *g = new WeightedGraph<sgsgsg>();
   for (int i = 1; i <= 6; ++i) {
     g->AddVertex(i);
   }
