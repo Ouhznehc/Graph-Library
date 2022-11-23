@@ -9,6 +9,12 @@
 #include <Algorithms/BellmanFordShortestPaths.h>
 
 using namespace std;
+
+struct sgsgsg{
+  int a;
+  sgsgsg() = delete;
+};
+
 static void test1() {
 
   auto *g = new WeightedGraph<int>();
@@ -22,9 +28,9 @@ static void test1() {
   g->AddEdge(5, 6, 5);
   g->AddEdge(6, 5, 6);
 
-  ShortestPaths<WeightedGraph<int>> *p = nullptr;
+  ShortestPaths<WeightedGraph<sgsgsg>> *p = nullptr;
   for (int i = 1; i <= 6; ++i) {
-    p = new BellmanFordShortestPaths<WeightedGraph<int>>(g, i);
+    p = new BellmanFordShortestPaths<WeightedGraph<sgsgsg>>(g, i);
     for (int j = 1; j <= 6; ++j) {
       printf("%d", p->HasPathTo(j));
     }
