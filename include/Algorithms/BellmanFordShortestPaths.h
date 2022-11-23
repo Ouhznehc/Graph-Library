@@ -18,16 +18,16 @@ class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
             while (spfa.size()) {
                 int now = spfa.front(); spfa.pop();
                 for(auto edge : this->graph->GetOutgoingEdges(now)){
-                    int y = edge.GetDestination();
-                    if(this->distance.find(y) == this->distance.end()){
-                        this->distance[y] = this->distance[now] + edge.GetWeight();
-                        this->pi[y] = now;
-                        spfa.push(y);
+                    int to = edge.GetDestination();
+                    if(this->distance.find(to) == this->distance.end()){
+                        this->distance[to] = this->distance[now] + edge.GetWeight();
+                        this->pi[to] = now;
+                        spfa.push(to);
                     }
-                    else if(this->distance[y] > this->distance[now] + edge.GetWeight()){
-                        this->distance[y] = this->distance[now] + edge.GetWeight();
-                        this->pi[y] = now;
-                        spfa.push(y);
+                    else if(this->distance[to] > this->distance[now] + edge.GetWeight()){
+                        this->distance[to] = this->distance[now] + edge.GetWeight();
+                        this->pi[to] = now;
+                        spfa.push(to);
                     }
                 }
             }
