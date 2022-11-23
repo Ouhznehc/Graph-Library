@@ -7,7 +7,8 @@
 template <typename TGraph>
 class DijkstraShortestPaths : public ShortestPaths<TGraph>
 {
-    static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TGraph requires default-constructible elements");
+    static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TValue requires default constructor");
+    static_assert(std::decltype(TGraph) == WeightedGraph || std::decltype(TGraph) == UndirectedWeightedGraph, "TGraph should be weighted");
     public:
         DijkstraShortestPaths(const TGraph *Graph, int Source)
         : ShortestPaths<TGraph>(Graph, Source)
