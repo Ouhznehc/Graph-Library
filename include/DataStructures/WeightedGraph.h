@@ -3,12 +3,10 @@
 
 #include "WeightedEdge.h"
 #include "DataStructures/Graph.h"
-#include <bits/stdc++.h>
 
 template <typename T>
 class WeightedGraph : public Graph
 {
-    //static_assert(std::is_default_constructible_v<weightType>, "TValue requires default constructor");
     public:
         typedef T TValue;
         WeightedGraph(){};
