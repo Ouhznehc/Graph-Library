@@ -4,23 +4,23 @@
 #include "ShortestPaths.h"
 
 
-template <template<typename> class TGraph, typename TValue>
-class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
+template <typename TGraph>
+class DijkstraShortestPaths : public ShortestPaths<TGraph>
 {
     public:
-        DijkstraShortestPaths(const TGraph<TValue> *Graph, int Source)
-        : ShortestPaths<TGraph, TValue>(Graph, Source)
+        DijkstraShortestPaths(const TGraph *Graph, int Source)
+        : ShortestPaths<TGraph>(Graph, Source)
         , dijkstra()
         {  
             if(!this->graph->ContainsVertex(this->source)) return;
             this->pi[this->source] = this->source;
-            this->distance[this->source] = TValue();
-            dijkstra.push(node(this->source, TValue()));
+            this->distance[this->source] = typename TGraph::TValue();
+            dijkstra.push(node(this->source, typename TGraph::TValue()));
             while(dijkstra.size()){
                 auto now = dijkstra.top().index; dijkstra.pop();
                 for(auto to: this->graph->GetOutgoingEdges(now)){
                     int idx = to.GetDestination();
-                    TValue dist = this->distance[now] + to.GetWeight();
+                    typename TGraph::TValue dist = this->distance[now] + to.GetWeight();
                     if((!this->HasPathTo(idx)) || dist < this->distance[idx]){
                         this->distance[idx] = dist;
                         this->pi[idx] = now; 
@@ -34,8 +34,8 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph, TValue>
         struct node 
         {  
             int index; 
-            TValue value;
-            node(int index = int(), TValue value = TValue()):index(index), value(value) {}
+            typename TGraph::TValue value;
+            node(int index = int(), typename TGraph::TValue value = typename TGraph::TValue()):index(index), value(value) {}
             bool operator< (const node &b) const {return b.value < value;}
         };
         std::priority_queue<node> dijkstra;

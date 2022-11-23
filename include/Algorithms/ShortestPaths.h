@@ -7,18 +7,18 @@
 #include <DataStructures/UndirectedWeightedGraph.h>
 #include <bits/stdc++.h>
 
-template <template<typename> class TGraph, typename TValue>
+template <typename TGraph>
 class ShortestPaths {
  public:
   ShortestPaths() = delete;
-  ShortestPaths(const TGraph<TValue> *graph, int source):source(source), graph(graph), distance(), pi(){}
+  ShortestPaths(const TGraph *graph, int source):source(source), graph(graph), distance(), pi(){}
   virtual ~ShortestPaths(){}
  public:
   bool HasPathTo(int destination) const {return distance.find(destination) != distance.end();}
-  std::optional<TValue> TryGetDistanceTo(int destination) const
+  std::optional<typename TGraph::TValue> TryGetDistanceTo(int destination) const
   {
     if(!HasPathTo(destination)) return std::nullopt;
-    else return std::optional<TValue>(distance.at(destination));
+    else return std::optional<typename TGraph::TValue>(distance.at(destination));
   }
   std::optional<std::vector<int>> TryGetShortestPathTo(int destination) const
   {
@@ -33,9 +33,9 @@ class ShortestPaths {
     return std::optional<std::vector<int>>(res);
   }
   protected:
-    std::unordered_map<int, TValue> distance;
+    std::unordered_map<int, typename TGraph::TValue> distance;
     std::unordered_map<int, int> pi;
-    const TGraph<TValue> *graph;
+    const TGraph<typename TGraph::TValue> *graph;
     const int source;
 };
 

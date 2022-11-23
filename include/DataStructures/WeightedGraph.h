@@ -8,6 +8,7 @@
 template <typename weightType>
 class WeightedGraph : public Graph
 {
+    typedef weightType TValue;
     public:
         WeightedGraph(){};
         ~WeightedGraph(){};
