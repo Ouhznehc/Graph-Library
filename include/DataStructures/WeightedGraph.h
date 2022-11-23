@@ -29,10 +29,10 @@ class WeightedGraph : public Graph
     public:
         weightType GetWeight(int vertex1, int vertex2) const{
             // auto tmp = Edge(vertex1, vertex2);
-            // auto fuk = WeightedEdge<weightType>(vertex1, vertex2, 0);
+            auto fuk = WeightedEdge<weightType>(vertex1, vertex2, weightType());
             // if(Edges.find(tmp) == Edges.end()) return weightType();
             // else return WeightedEdges.find(fuk)->GetWeight();
-            return weightType();
+            return WeightedEdges.find(fuk)->GetWeight();
         }
 
         std::vector<WeightedEdge<weightType>> GetEdges() const{
