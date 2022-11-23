@@ -32,7 +32,7 @@ class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
                 }
             }
         }
-        virtual ~BellmanFordShortestPaths();
+        virtual ~BellmanFordShortestPaths(){};
     private:
         std::queue<int> spfa;
 
