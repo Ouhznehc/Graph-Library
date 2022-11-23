@@ -16,10 +16,8 @@ class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
             this->pi[this->source] = this->source;
             spfa.push(this->source);
             while (spfa.size()) {
-                int now = spfa.front();
-                spfa.pop();
-                std::vector<WeightedEdge<typename TGraph::TValue>> edges= this->graph->GetOutgoingEdges(now);
-                for(auto edge : edges){
+                int now = spfa.front(); spfa.pop();
+                for(auto edge : this->graph->GetOutgoingEdges(now)){
                     int y = edge.GetDestination();
                     if(this->distance.find(y) == this->distance.end()){
                         this->distance[y] = this->distance[now] + edge.GetWeight();
