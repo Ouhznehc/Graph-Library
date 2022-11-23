@@ -9,7 +9,7 @@
 
 template <typename TGraph>
 class ShortestPaths {
-  // static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TValue requires default constructor");
+  static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TValue requires default constructor");
  public:
   ShortestPaths() = delete;
   ShortestPaths(const TGraph *graph, int source):source(source), graph(graph), distance(), pi(){}
