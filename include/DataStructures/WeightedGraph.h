@@ -16,7 +16,7 @@ class WeightedGraph : public Graph
     public:
         virtual bool AddEdge(int vertex1, int vertex2, T weight){
             bool flag = Graph::AddEdge(vertex1, vertex2);
-            if(flag) WeightMap.insert(std::make_pair((vertex1, vertex2), weight));
+            if(flag) WeightMap.emplace(std::make_pair(vertex1, vertex2), weight);
             return flag;    
         }
 
