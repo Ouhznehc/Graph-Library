@@ -4,6 +4,7 @@
 #include "WeightedEdge.h"
 #include "DataStructures/Graph.h"
 #include <set>
+#include <map>
 
 template <typename T>
 class WeightedGraph : public Graph
