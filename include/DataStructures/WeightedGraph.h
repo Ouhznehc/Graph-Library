@@ -8,7 +8,7 @@
 template <typename weightType>
 class WeightedGraph : public Graph
 {
-    static_assert(std::is_default_constructible_v<weightType>, "TGraph requires default-constructible elements");
+    //static_assert(std::is_default_constructible_v<weightType>, "TGraph requires default-constructible elements");
     public:
         typedef weightType TValue;
         WeightedGraph(){};
@@ -28,8 +28,8 @@ class WeightedGraph : public Graph
 
     public:
         weightType GetWeight(int vertex1, int vertex2) const{
-            if(WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, weightType())) == WeightedEdges.end()) return weightType();
-            else return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, 0))->GetWeight();
+            if(WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2)) == WeightedEdges.end()) return weightType();
+            else return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2))->GetWeight();
         }
 
         std::vector<WeightedEdge<weightType>> GetEdges() const{
