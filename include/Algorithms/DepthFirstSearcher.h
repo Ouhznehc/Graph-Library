@@ -3,7 +3,9 @@
 
 #include <functional>
 #include <optional>
-#include <bits/stdc++.h>
+#include <vector>
+#include <queue>
+#include <map>
 
 template <typename TGraph>
 class DepthFirstSearcher {

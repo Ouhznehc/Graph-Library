@@ -5,7 +5,6 @@
 #include <optional>
 #include <DataStructures/WeightedGraph.h>
 #include <DataStructures/UndirectedWeightedGraph.h>
-#include <bits/stdc++.h>
 
 template <typename TGraph>
 class ShortestPaths {
