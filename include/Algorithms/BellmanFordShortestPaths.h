@@ -15,28 +15,23 @@ class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
             this->distance[this->source] = typename TGraph::TValue();
             this->pi[this->source] = this->source;
             spfa.push(this->source);
-            while (q.size()) {
-                int now = q.front();
-                q.pop();
-                this->vis[now] = false;
-
-                std::vector<WeightedEdge<typename TGraph::value_type>> edges= graph->GetOutgoingEdges(now);
-                for(auto ed : edges){
-                int y = ed.GetDestination();
-                if(this->d.find(y) == this->d.end()){
-                    this->d[y] = this->d[now] + ed.GetWeight();
-                    this->pre[y] = now;
-                    q.push(y);
-                    this->vis[y] = true;
-                }
-                else if(this->d[y] > this->d[now] + ed.GetWeight()){
-                    this->d[y] = this->d[now] + ed.GetWeight();
-                    this->pre[y] = now;
-                    if(this->vis[y] == false){
-                    this->vis[y] = true;
-                    q.push(y);
+            while (spfa.size()) {
+                int now = spfa.front();
+                spfa.pop();
+                std::vector<WeightedEdge<typename TGraph::TValue>> edges= this->graph->GetOutgoingEdges(now);
+                for(auto edge : edges){
+                    int y = edge.GetDestination();
+                    if(this->distance.find(y) == this->distance.end()){
+                        this->distance[y] = this->distance[now] + edge.GetWeight();
+                        this->pre[y] = now;
+                        q.push(y);
+                        this->vis[y] = true;
                     }
-                }
+                    else if(this->d[y] > this->d[now] + ed.GetWeight()){
+                        this->d[y] = this->d[now] + ed.GetWeight();
+                        this->pre[y] = now;
+                        q.push(y);
+                    }
                 }
             }
         }

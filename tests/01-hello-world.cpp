@@ -6,6 +6,7 @@
 #include <Algorithms/DepthFirstSearcher.h>
 #include <Algorithms/DijkstraShortestPaths.h>
 #include <Algorithms/ShortestPaths.h>
+#include <Algorithms/BellmanFordShortestPaths.h>
 
 using namespace std;
 static void test1() {
