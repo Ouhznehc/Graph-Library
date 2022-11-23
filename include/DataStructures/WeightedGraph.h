@@ -16,20 +16,20 @@ class WeightedGraph : public Graph
     public:
         virtual bool AddEdge(int vertex1, int vertex2, T weight){
             bool flag = Graph::AddEdge(vertex1, vertex2);
-            if(flag) WeightMap.emplace(std::make_pair(vertex1, vertex2), weight);
+            if(flag) WeightMap.emplace(Edge(vertex1, vertex2), weight);
             return flag;    
         }
 
         virtual bool RemoveEdge(int vertex1, int vertex2){
             bool flag = Graph::RemoveEdge(vertex1, vertex2);
-            if(flag) WeightMap.erase((vertex1, vertex2));
+            if(flag) WeightMap.erase(Edge(vertex1, vertex2));
             return flag;
         }
 
     public:
         T GetWeight(int vertex1, int vertex2) const{
             if(WeightMap.find(vertex1, vertex2) == WeightMap.end()) return 0;
-            else return WeightedMap.at((vertex1, vertex2));
+            else return WeightedMap.at(Edge(vertex1, vertex2));
         }
 
         std::vector<WeightedEdge<T>> GetEdges() const{
@@ -62,7 +62,7 @@ class WeightedGraph : public Graph
         }
         
     protected:
-        std::map<std::pair<int, int>, T> WeightMap;
+        std::map<Edge, T> WeightMap;
 
 };
 
