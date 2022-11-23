@@ -35,7 +35,7 @@ class ShortestPaths {
   protected:
     std::unordered_map<int, typename TGraph::TValue> distance;
     std::unordered_map<int, int> pi;
-    const TGraph<typename TGraph::TValue> *graph;
+    const TGraph *graph;
     const int source;
 };
 
