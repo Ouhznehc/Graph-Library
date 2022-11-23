@@ -6,9 +6,9 @@
 template <typename weightType>
 class UndirectedWeightedGraph : public WeightedGraph<weightType>
 {
-    typedef weightType TValue;
     public:
-       UndirectedWeightedGraph(){};
+        typedef weightType TValue;
+        UndirectedWeightedGraph(){};
        ~UndirectedWeightedGraph(){};
     
     public:
