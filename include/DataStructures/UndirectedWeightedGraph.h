@@ -6,6 +6,7 @@
 template <typename weightType>
 class UndirectedWeightedGraph : public WeightedGraph<weightType>
 {
+    static_assert(std::is_default_constructible_v<weightType>, "TGraph requires default-constructible elements");
     public:
         typedef weightType TValue;
         UndirectedWeightedGraph(){};
