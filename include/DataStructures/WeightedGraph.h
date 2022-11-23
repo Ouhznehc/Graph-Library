@@ -29,7 +29,7 @@ class WeightedGraph : public Graph
     public:
         weightType GetWeight(int vertex1, int vertex2) const{
             if(WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, weightType())) == WeightedEdges.end()) return weightType();
-            else return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2))->GetWeight();
+            else return WeightedEdges.find(WeightedEdge<weightType>(vertex1, vertex2, weightType()))->GetWeight();
         }
 
         std::vector<WeightedEdge<weightType>> GetEdges() const{
