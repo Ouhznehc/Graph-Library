@@ -41,9 +41,9 @@ class UndirectedWeightedGraph : public WeightedGraph<T>
 
         std::vector<WeightedEdge<T>> GetEdges() const{
             std::vector<WeightedEdge<T>> ans;
-            for(auto i = Graph::Edges.begin(); i != Graph::Edges.end(); i++){
+            for(auto it = Graph::Edges.begin(); it != Graph::Edges.end(); it++){
                 ans.push_back(WeightedEdge(it->GetSource(), it->GetDestination(), GetWeight(it->GetSource(), it->GetDestination())));
-                if(i->GetSource() != i->GetDestination()) i++;
+                if(it->GetSource() != it->GetDestination()) it++;
             }
             return ans;
         }
