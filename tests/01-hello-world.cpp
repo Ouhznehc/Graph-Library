@@ -13,7 +13,7 @@ using namespace std;
 struct strict_int {
     int val;
     strict_int(int v): val(v) {}
-    strict_int() = delete;
+    strict_int();
 };
 static WeightedGraph<strict_int> test_wg1;
 static UndirectedWeightedGraph<strict_int> test_wg2;
