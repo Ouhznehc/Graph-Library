@@ -14,6 +14,7 @@ struct sgsgsg{
   int a;
   sgsgsg();
   sgsgsg operator + (const sgsgsg &b) const{return sgsgsg();}
+  bool operator > (const sgsgsg &b) const{return false;}
 };
 
 static void test1() {
