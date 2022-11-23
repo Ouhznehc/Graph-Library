@@ -13,6 +13,7 @@ using namespace std;
 struct sgsgsg{
   int a;
   sgsgsg();
+  sgsgsg(int _a){a=_a;}
   sgsgsg operator + (const sgsgsg &b) const{return sgsgsg();}
   bool operator > (const sgsgsg &b) const{return false;}
 };
