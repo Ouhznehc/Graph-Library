@@ -3,56 +3,56 @@
 
 #include <DataStructures/WeightedGraph.h>
 
-template <typename weightType>
-class UndirectedWeightedGraph : public WeightedGraph<weightType>
+template <typename T>
+class UndirectedWeightedGraph : public WeightedGraph<T>
 {
-    //static_assert(std::is_default_constructible_v<weightType>, "TGraph requires default-constructible elements");
+    //static_assert(std::is_default_constructible_v<T>, "TGraph requires default-constructible elements");
     public:
-        typedef weightType TValue;
+        typedef T TValue;
         UndirectedWeightedGraph(){};
        ~UndirectedWeightedGraph(){};
     
     public:
-        bool AddEdge(int vertex1, int vertex2, weightType weight){
+        bool AddEdge(int vertex1, int vertex2, T weight){
             if(vertex1 == vertex2){
-                bool flag = WeightedGraph<weightType>::AddEdge(vertex1, vertex2, weight);
+                bool flag = WeightedGraph<T>::AddEdge(vertex1, vertex2, weight);
                 if(flag)trival_circle_num++;
                 return flag;
             }
             else{
-                return WeightedGraph<weightType>::AddEdge(vertex1, vertex2, weight) && WeightedGraph<weightType>::AddEdge(vertex2, vertex1, weight);
+                return WeightedGraph<T>::AddEdge(vertex1, vertex2, weight) && WeightedGraph<T>::AddEdge(vertex2, vertex1, weight);
             }
         }
 
         bool RemoveEdge(int vertex1, int vertex2){
             if(vertex1 == vertex2){
-                bool flag = WeightedGraph<weightType>::RemoveEdge(vertex1, vertex2);
+                bool flag = WeightedGraph<T>::RemoveEdge(vertex1, vertex2);
                 if(flag) trival_circle_num--;
                 return flag;
             }
             else {
-                return WeightedGraph<weightType>::RemoveEdge(vertex1, vertex2) && WeightedGraph<weightType>::RemoveEdge(vertex2, vertex1);
+                return WeightedGraph<T>::RemoveEdge(vertex1, vertex2) && WeightedGraph<T>::RemoveEdge(vertex2, vertex1);
             }    
         }
 
         int CountEdges() const{
-            return (WeightedGraph<weightType>::CountEdges() + trival_circle_num) / 2;
+            return (WeightedGraph<T>::CountEdges() + trival_circle_num) / 2;
         }
 
-        std::vector<WeightedEdge<weightType>> GetEdges() const{
-            std::vector<WeightedEdge<weightType>> ans;
-            for(auto i = WeightedGraph<weightType>::WeightedEdges.begin(); i != WeightedGraph<weightType>::WeightedEdges.end(); i++){
-                ans.push_back(*i);
+        std::vector<WeightedEdge<T>> GetEdges() const{
+            std::vector<WeightedEdge<T>> ans;
+            for(auto i = Edges.begin(); i != Edges.end(); i++){
+                ans.push_back(WeightedEdge(it->GetSource(), it->GetDestination(), GetWeight(it->GetSource(), it->GetDestination())));
                 if(i->GetSource() != i->GetDestination()) i++;
             }
             return ans;
         }
 
         int GetDegree(int vertex) const{
-            if(WeightedGraph<weightType>::ContainsEdge(vertex, vertex))
-                return WeightedGraph<weightType>::GetNeighbors(vertex).size() + 1;
+            if(WeightedGraph<T>::ContainsEdge(vertex, vertex))
+                return WeightedGraph<T>::GetNeighbors(vertex).size() + 1;
             else
-                return WeightedGraph<weightType>::GetNeighbors(vertex).size();
+                return WeightedGraph<T>::GetNeighbors(vertex).size();
         }
         
     protected:

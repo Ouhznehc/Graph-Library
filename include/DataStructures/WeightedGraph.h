@@ -5,57 +5,56 @@
 #include "DataStructures/Graph.h"
 #include <bits/stdc++.h>
 
-template <typename weightType>
+template <typename T>
 class WeightedGraph : public Graph
 {
     //static_assert(std::is_default_constructible_v<weightType>, "TValue requires default constructor");
     public:
-        typedef weightType TValue;
+        typedef T TValue;
         WeightedGraph(){};
         ~WeightedGraph(){};
     public:
-        virtual bool AddEdge(int vertex1, int vertex2, weightType weight){
+        virtual bool AddEdge(int vertex1, int vertex2, T weight){
             bool flag = Graph::AddEdge(vertex1, vertex2);
-            if(flag) WeightedEdges.insert(WeightedEdge<weightType>(vertex1, vertex2, weight));
+            if(flag) WeightMap.insert((vertex1, vertex2), weight);
             return flag;    
         }
 
         virtual bool RemoveEdge(int vertex1, int vertex2){
             bool flag = Graph::RemoveEdge(vertex1, vertex2);
-            if(flag) WeightedEdges.erase(WeightedEdge<weightType>(vertex1, vertex2, GetWeight(vertex1, vertex2)));
+            if(flag) WeightMap.erase((vertex1, vertex2));
             return flag;
         }
 
     public:
-        weightType GetWeight(int vertex1, int vertex2) const{
-            auto tmp = WeightedEdge<weightType>(vertex1, vertex2, weightType());
-            if(Edges.find(tmp) == Edges.end()) return weightType();
-            else return WeightedEdges.find(tmp)->GetWeight();
+        T GetWeight(int vertex1, int vertex2) const{
+            if(WeightMap.find(vertex1, vertex2) == WeightMap.end()) return 0;
+            else return WeightedMap.at((vertex1, vertex2));
         }
 
-        std::vector<WeightedEdge<weightType>> GetEdges() const{
-            std::vector<WeightedEdge<weightType>> edges;
-            for(auto it: WeightedEdges)
-                edges.push_back(it);
+        std::vector<WeightedEdge<T>> GetEdges() const{
+            std::vector<WeightedEdge<T>> edges;
+            for(auto it: Edges)
+                edges.push_back(WeightedEdge<T>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination())));
             return edges;
         }
 
-        std::vector<WeightedEdge<weightType>> GetIncomingEdges(int vertex) const{
-            std::vector<WeightedEdge<weightType>> null;
+        std::vector<WeightedEdge<T>> GetIncomingEdges(int vertex) const{
+            std::vector<WeightedEdge<T>> null;
             if(IncomingEdges.find(vertex) != IncomingEdges.end()){
                 for(auto it: IncomingEdges.at(vertex)){
-                    auto tmp = WeightedEdge<weightType>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination()));
+                    auto tmp = WeightedEdge<T>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination()));
                     null.push_back(tmp);
                 }
             }
             return null;
         }
 
-        std::vector<WeightedEdge<weightType>> GetOutgoingEdges(int vertex) const{
-            std::vector<WeightedEdge<weightType>> null;
+        std::vector<WeightedEdge<T>> GetOutgoingEdges(int vertex) const{
+            std::vector<WeightedEdge<T>> null;
             if(OutgoingEdges.find(vertex) != OutgoingEdges.end()){
                 for(auto it : OutgoingEdges.at(vertex)){
-                    auto tmp = WeightedEdge<weightType>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination()));
+                    auto tmp = WeightedEdge<T>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination()));
                     null.push_back(tmp);
                 }
             }
@@ -63,7 +62,7 @@ class WeightedGraph : public Graph
         }
         
     protected:
-        std::set<WeightedEdge<weightType>> WeightedEdges;
+        std::map<pair<int, int>, T> WeightMap;
 
 };
 
