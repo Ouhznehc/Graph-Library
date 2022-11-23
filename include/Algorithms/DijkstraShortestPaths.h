@@ -3,8 +3,8 @@
 
 #include "ShortestPaths.h"
 
-template <class T>
-inline constexpr bool is_addable = requires(T a, T b) {a+b;};
+// template <class T>
+inline constexpr bool is_addable = requires(int a, int b) {a+b;};
 
 template <typename TGraph>
 class DijkstraShortestPaths : public ShortestPaths<TGraph>
