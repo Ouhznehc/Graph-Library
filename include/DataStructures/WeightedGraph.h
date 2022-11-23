@@ -62,7 +62,7 @@ class WeightedGraph : public Graph
         }
         
     protected:
-        std::map<pair<int, int>, T> WeightMap;
+        std::map<std::pair<int, int>, T> WeightMap;
 
 };
 
