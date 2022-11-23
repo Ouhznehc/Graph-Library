@@ -7,7 +7,6 @@ class WeightedEdge: public Edge
 {
     public:
         WeightedEdge(int source, int destination, weightType weight):Edge(source, destination), weight(weight){};
-        WeightedEdge(int source, int destination):Edge(source, destination){};
         ~WeightedEdge(){};
         bool operator==(const WeightedEdge<weightType> &b) const {
             return this->source == b.source && this->destination == b.destination;
