@@ -3,6 +3,7 @@
 
 #include "WeightedEdge.h"
 #include "DataStructures/Graph.h"
+#include <set>
 
 template <typename T>
 class WeightedGraph : public Graph
