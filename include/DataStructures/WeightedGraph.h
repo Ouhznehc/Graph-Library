@@ -28,7 +28,7 @@ class WeightedGraph : public Graph
 
     public:
         T GetWeight(int vertex1, int vertex2) const{
-            if(WeightMap.find(vertex1, vertex2) == WeightMap.end()) return 0;
+            if(WeightMap.find(Edge(vertex1, vertex2)) == WeightMap.end()) return 0;
             else return WeightMap.at(Edge(vertex1, vertex2));
         }
 
