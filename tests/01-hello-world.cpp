@@ -13,6 +13,7 @@ using namespace std;
 struct sgsgsg{
   int a;
   sgsgsg();
+  sgsgsg operator + (const sgsgsg &b) const{return sgsgsg();}
 };
 
 static void test1() {
