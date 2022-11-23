@@ -8,7 +8,7 @@
 template <typename weightType>
 class WeightedGraph : public Graph
 {
-    static_assert(std::is_default_constructible_v<weightType>, "TGraph requires default-constructible elements");
+    //static_assert(std::is_default_constructible_v<weightType>, "TGraph requires default-constructible elements");
     public:
         typedef weightType TValue;
         WeightedGraph(){};
