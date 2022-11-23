@@ -5,6 +5,7 @@
 #include "DataStructures/Graph.h"
 #include <set>
 #include <map>
+#include <unordered_map>
 
 template <typename T>
 class WeightedGraph : public Graph
