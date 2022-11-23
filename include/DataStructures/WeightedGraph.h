@@ -29,7 +29,7 @@ class WeightedGraph : public Graph
     public:
         T GetWeight(int vertex1, int vertex2) const{
             if(WeightMap.find(vertex1, vertex2) == WeightMap.end()) return 0;
-            else return WeightedMap.at(Edge(vertex1, vertex2));
+            else return WeightMap.at(Edge(vertex1, vertex2));
         }
 
         std::vector<WeightedEdge<T>> GetEdges() const{
