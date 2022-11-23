@@ -43,6 +43,13 @@ static void test1() {
 
   delete g;
 }
+struct strict_int {
+    int val;
+    strict_int(int v): val(v) {}
+    strict_int() = delete;
+};
+static WeightedGraph<strict_int> test_wg1;
+static UndirectedWeightedGraph<strict_int> test_wg2;
 int main()
 {
    test1();
