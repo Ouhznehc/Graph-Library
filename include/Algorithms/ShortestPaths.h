@@ -11,7 +11,7 @@ template <typename TGraph>
 class ShortestPaths {
     static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TValue requires default constructor");
     static_assert(std::is_same_v<TGraph, WeightedGraph<typename TGraph::TValue>> || std::is_same_v<TGraph, UndirectedWeightedGraph<typename TGraph::TValue>>, "TGraph should be weighted");
-    //static_assert(requires(typename TGraph::TValue a, typename TGraph::TValue b){a + b;}, "TValue requires operator+");
+    static_assert(requires(typename TGraph::TValue a, typename TGraph::TValue b){a + b;}, "TValue requires operator+");
  public:
   ShortestPaths() = delete;
   ShortestPaths(const TGraph *graph, int source):source(source), graph(graph), distance(), pi(){}
