@@ -1,5 +1,5 @@
-#ifndef BELLMANFORDSHORTESTPATHS_H
-#define BELLMANFORDSHORTESTPATHS_H
+#ifndef BELLMAN_FORD_SHORTEST_PATHS_H
+#define BELLMAN_FORD_SHORTEST_PATHS_H
 
 #include <Algorithms/ShortestPaths.h>
 #include <DataStructures/WeightedEdge.h>
