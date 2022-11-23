@@ -12,7 +12,7 @@ using namespace std;
 
 struct sgsgsg{
   int a;
-  sgsgsg() = delete;
+  sgsgsg();
 };
 
 static void test1() {
