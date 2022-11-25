@@ -7,6 +7,7 @@
 #include <Algorithms/DijkstraShortestPaths.h>
 #include <Algorithms/ShortestPaths.h>
 #include <Algorithms/BellmanFordShortestPaths.h>
+#include <Algorithms/MultiSourceShortestPaths.h>
 
 using namespace std;
 
