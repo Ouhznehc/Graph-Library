@@ -18,7 +18,7 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
                         typename TGraph ::TValue dist = this->distance.at(std::make_pair(i, mid)) + this->distance.at(std::make_pair(mid, j));
                         if(!this->HasPathOf(i, j) || dist < this->distance.at(std::make_pair(i, j))){
                             this->distance[std::make_pair(i, j)] = dist;
-                            this->pi[std::make_pair(i, j)] = mid;
+                            this->pi[std::make_pair(i, j)] = 0;
                         }
                     }
         }
