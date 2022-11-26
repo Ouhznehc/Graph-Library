@@ -4,6 +4,8 @@
 #include <vector>
 #include <optional>
 #include <unordered_map>
+#include <DataStructures/WeightedGraph.h>
+#include <DataStructures/UndirectedWeightedGraph.h>
 
 template <typename TGraph>
 class MultiSourceShortestPaths 
