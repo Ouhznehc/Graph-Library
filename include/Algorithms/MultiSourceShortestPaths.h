@@ -26,7 +26,7 @@ class MultiSourceShortestPaths
         distance.emplace(std::make_pair(vertex, vertex), typename TGraph::TValue());
       }
     };
-    virtual ~MultiSourceShortestPaths(){};
+    virtual ~MultiSourceShortestPaths(){}
   public:
     bool HasPathOf(int source, int destination) const {
       return distance.find(std::make_pair(source, destination)) != distance.end();
