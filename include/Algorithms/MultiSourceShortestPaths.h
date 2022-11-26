@@ -21,12 +21,12 @@ class MultiSourceShortestPaths
         int destination = edge.GetDestination();
         if(source == destination) continue;
         typename TGraph::TValue weight = edge.GetWeight();
-        distance.emplace(std::make_pair(source, destination), weight);
-        pi.emplace(std::make_pair(source, destination), source);
+        distance[std::make_pair(source, destination)] = weight;
+        pi[std::make_pair(source, destination)] = source;
       }
       auto vertices = graph->GetVertices();
       for(auto vertex : vertices){
-        distance.emplace(std::make_pair(vertex, vertex), typename TGraph::TValue());
+        distance.[std::make_pair(vertex, vertex)] =  typename TGraph::TValue();
       }
     };
     virtual ~MultiSourceShortestPaths(){}
