@@ -48,6 +48,15 @@ class UndirectedWeightedGraph : public WeightedGraph<T>
             return ans;
         }
 
+        std::vector<WeightedEdge<T>> GetAllEdges() const {
+            std::vector<WeightedEdge<T>> ans;
+            for(auto it = Graph::Edges.begin(); it != Graph::Edges.end(); it++){
+                ans.push_back(WeightedEdge(it->GetSource(), it->GetDestination(), WeightedGraph<T>::GetWeight(it->GetSource(), it->GetDestination())));
+            }
+            return ans;
+        }
+
+
         int GetDegree(int vertex) const{
             if(WeightedGraph<T>::ContainsEdge(vertex, vertex))
                 return WeightedGraph<T>::GetNeighbors(vertex).size() + 1;

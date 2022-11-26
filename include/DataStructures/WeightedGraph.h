@@ -28,19 +28,23 @@ class WeightedGraph : public Graph
         }
 
     public:
-        T GetWeight(int vertex1, int vertex2) const{
+        T GetWeight(int vertex1, int vertex2) const {
             if(WeightMap.find(Edge(vertex1, vertex2)) == WeightMap.end()) return 0;
             else return WeightMap.at(Edge(vertex1, vertex2));
         }
 
-        std::vector<WeightedEdge<T>> GetEdges() const{
+        std::vector<WeightedEdge<T>> GetEdges() const {
             std::vector<WeightedEdge<T>> edges;
             for(auto it: Edges)
                 edges.push_back(WeightedEdge<T>(it.GetSource(), it.GetDestination(), GetWeight(it.GetSource(), it.GetDestination())));
             return edges;
         }
 
-        std::vector<WeightedEdge<T>> GetIncomingEdges(int vertex) const{
+        std::vector<WeightedEdge<T>> GetAllEdges() const {
+            return GetEdges();
+        }
+        
+        std::vector<WeightedEdge<T>> GetIncomingEdges(int vertex) const {
             std::vector<WeightedEdge<T>> null;
             if(IncomingEdges.find(vertex) != IncomingEdges.end()){
                 for(auto it: IncomingEdges.at(vertex)){
@@ -64,7 +68,6 @@ class WeightedGraph : public Graph
         
     protected:
         std::map<Edge, T> WeightMap;
-
 };
 
 #endif
