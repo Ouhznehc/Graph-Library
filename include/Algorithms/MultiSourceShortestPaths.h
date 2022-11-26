@@ -27,7 +27,6 @@ class MultiSourceShortestPaths
       auto vertices = graph->GetVertices();
       for(auto vertex : vertices){
         distance.emplace(std::make_pair(vertex, vertex), typename TGraph::TValue());
-        pi.emplace(std::make_pair(vertex, vertex), vertex);
       }
     };
     virtual ~MultiSourceShortestPaths(){}
