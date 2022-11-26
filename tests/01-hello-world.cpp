@@ -18,8 +18,8 @@ struct strict_int {
     strict_int();
 };
 static WeightedGraph<strict_int> test_wg1;
-static UndirectedWeightedGraph<strict_int> test_wg2;
-static MultiSourceShortestPaths<UndirectedWeightedGraph<strict_int>> a;
+static UndirectedWeightedGraph<strict_int> *test_wg2;
+static MultiSourceShortestPaths<UndirectedWeightedGraph<strict_int>> a(test_wg2);
 
 int main()
 {
