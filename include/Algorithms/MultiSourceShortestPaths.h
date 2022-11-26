@@ -21,7 +21,7 @@ class MultiSourceShortestPaths
         int destination = edge.GetDestination();
         typename TGraph::TValue weight = edge.GetWeight();
         distance.emplace(std::make_pair(source, destination), weight);
-        pi.emplace(std::make_pair(source, destination), destination);
+        pi.emplace(std::make_pair(source, destination), source);
       }
       auto vertices = graph->GetVertices();
       for(auto vertex : vertices){
@@ -49,7 +49,7 @@ class MultiSourceShortestPaths
       return std::optional<std::vector<int>>(ans);
     }
   protected:
-    std::unordered_map<std::pair<int, int>, typename TGraph::TValue> distance;
+    std::map<std::pair<int, int>, typename TGraph::TValue> distance;
     std::map<std::pair<int,int>, int> pi;
 };
 
