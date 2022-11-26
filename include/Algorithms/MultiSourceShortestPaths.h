@@ -20,13 +20,13 @@ class MultiSourceShortestPaths
         int source = edge.GetSource();
         int destination = edge.GetDestination();
         typename TGraph::TValue weight = edge.GetWeight();
-        distance.emplace(std::make_pair(source, destination), weight);
-        pi.emplace(std::make_pair(source, destination), source);
+        distance.insert(std::make_pair(source, destination), weight);
+        pi.insert(std::make_pair(source, destination), source);
       }
       auto vertices = graph->GetVertices();
       for(auto vertex : vertices){
-        distance.emplace(std::make_pair(vertex, vertex), typename TGraph::TValue());
-        pi.emplace(std::make_pair(vertex, vertex), vertex);
+        distance.insert(std::make_pair(vertex, vertex), typename TGraph::TValue());
+        pi.insert(std::make_pair(vertex, vertex), vertex);
       }
     };
     virtual ~MultiSourceShortestPaths(){}
