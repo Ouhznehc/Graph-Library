@@ -47,8 +47,8 @@ class MultiSourceShortestPaths
       return std::optional<std::vector<int>>(ans);
     }
   protected:
-    std::unordered_map<std::pair<int, int>, typename TGraph::TValue> distance;
-    std::unordered_map<std::pair<int,int>, int> pi;
+    std::map<std::pair<int, int>, typename TGraph::TValue> distance;
+    std::map<std::pair<int,int>, int> pi;
 };
 
 #endif
