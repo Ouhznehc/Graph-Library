@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <optional>
+#include <unordered_map>
 
 template <typename TGraph>
 class MultiSourceShortestPaths 
