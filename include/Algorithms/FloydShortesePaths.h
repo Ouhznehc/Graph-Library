@@ -14,11 +14,10 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
             for(auto mid : vertices){
                 for(auto i : vertices){
                     for(auto j : vertices){
-                        if(){
-                            this->distance.emplace()
-                        }
-                        else{
-
+                        typename TGraph ::TValue dist = this->distance.at((*i, *mid)) + this->distance.at(*mid, *j);
+                        if(!this->HasPathOf(*i, *j) || dist < this->distance.at((*i, *j))){
+                            this->distance.emplace((*i, *j), dist);
+                            this->pi.emplace((*i, *j), *mid);
                         }
                     }
                 }

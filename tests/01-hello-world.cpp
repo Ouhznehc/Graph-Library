@@ -8,6 +8,7 @@
 #include <Algorithms/ShortestPaths.h>
 #include <Algorithms/BellmanFordShortestPaths.h>
 #include <Algorithms/MultiSourceShortestPaths.h>
+#include <Algorithms/FloydShortesePaths.h>
 
 using namespace std;
 
