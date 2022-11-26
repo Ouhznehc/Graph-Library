@@ -45,7 +45,7 @@ class MultiSourceShortestPaths
         destination = pi.at(std::make_pair(source, destination));
       }
       ans.push_back(source);
-      std::reverse(ans.begin(), ans.end());
+//      std::reverse(ans.begin(), ans.end());
       return std::optional<std::vector<int>>(ans);
     }
   protected:
