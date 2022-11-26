@@ -7,10 +7,10 @@ template <typename TGraph>
 class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {
     public:
-        FloydShortestPaths(const TGraph *Graph)
-           :MultiSourceShortestPaths<TGraph>(Graph)
+        FloydShortestPaths(const TGraph *graph)
+           :MultiSourceShortestPaths<TGraph>(graph)
         {
-            auto vertices = this->graph->GetVertices();
+            auto vertices = graph->GetVertices();
             for(auto mid : vertices)
                 for(auto i : vertices)
                     for(auto j : vertices){
