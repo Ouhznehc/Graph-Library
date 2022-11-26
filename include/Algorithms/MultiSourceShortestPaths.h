@@ -19,6 +19,7 @@ class MultiSourceShortestPaths
         int destination = edge->Getdestionation();
         int weight = edge->GetWeight(source, destination);
         this->distance.emplace(std::make_pair(source, destination), weight);
+        dasda
       }
     };
     virtual ~MultiSourceShortestPaths(){};
