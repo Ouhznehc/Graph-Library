@@ -18,8 +18,8 @@ class MultiSourceShortestPaths
         int source = edge->GetSource();
         int destination = edge->Getdestionation();
         int weight = edge->GetWeight(source, destination);
-        this->distance.emplace(std::make_pair(source, destination), weight);
-        this->pi.empalce(std::make_pair(source, destination), destination);
+        this->distance.emplace((source, destination), weight);
+        this->pi.empalce((source, destination), destination);
       }
       auto vertices = this->graph->GetVertices();
       for(auto vertex : vertices){
