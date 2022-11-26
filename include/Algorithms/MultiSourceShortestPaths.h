@@ -18,17 +18,19 @@ class MultiSourceShortestPaths
         int source = edge->GetSource();
         int destination = edge->Getdestionation();
         int weight = edge->GetWeight(source, destination);
-        this->distance.emplace(std::make_pair(source, destination), weight);
-        this->pi.empalce(std::make_pair(source, destination), destination);
+        distance.emplace(std::make_pair(source, destination), weight);
+        pi.empalce(std::make_pair(source, destination), destination);
       }
       auto vertices = this->graph->GetVertices();
       for(auto vertex : vertices){
-        this->distance.emplace(std::make_pair(*vertex, *vertex), typename TGraph::TValue());
+        istance.emplace(std::make_pair(*vertex, *vertex), typename TGraph::TValue());
       }
     };
     virtual ~MultiSourceShortestPaths(){};
   public:
-    bool HasPathOf(int source, int destination) const;
+    bool HasPathOf(int source, int destination) const {
+      return distance.find(std::make_pair(source, destination)) != distance.end();
+    }
     std::optional<typename TGraph::TValue> TryGetDistanceOf(int source, int destination) const;
     std::optional<std::vector<int>> TryGetShortestPathOf(int source, int destination) const;
   protected:

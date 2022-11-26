@@ -21,6 +21,7 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
                         }
                     }
         }
+        ~FloydShortestPaths(){}
 };
 
 #endif
