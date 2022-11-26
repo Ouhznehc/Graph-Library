@@ -8,9 +8,8 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {
     public:
         FloydShortestPaths(const TGraph *Graph)
- //           :MultiSourceShortestPaths<TGraph>(Graph)
+           :MultiSourceShortestPaths<TGraph>(Graph)
         {
-            auto null = MultiSourceShortestPaths<TGraph>(Graph);
             auto vertices = this->graph->GetVertices();
             for(auto mid : vertices)
                 for(auto i : vertices)
