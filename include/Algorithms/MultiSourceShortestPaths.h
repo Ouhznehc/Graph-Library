@@ -31,8 +31,21 @@ class MultiSourceShortestPaths
     bool HasPathOf(int source, int destination) const {
       return distance.find(std::make_pair(source, destination)) != distance.end();
     }
-    std::optional<typename TGraph::TValue> TryGetDistanceOf(int source, int destination) const;
-    std::optional<std::vector<int>> TryGetShortestPathOf(int source, int destination) const;
+    std::optional<typename TGraph::TValue> TryGetDistanceOf(int source, int destination) const {
+      if(!HasPathOf(source, destination)) return std::nullopt;
+      else return std::optional<typename TGraph::TValue>(distance.at((source, destination)));
+    }
+    std::optional<std::vector<int>> TryGetShortestPathOf(int source, int destination) const {
+      if(!HasPathOf(source, destination)) return std::nullopt;
+      std::vector<int> ans;
+      while(source != destination){
+        ans.push_back(destination);
+        destination = pi.at(std::make_pair(source, destination));
+      }
+      ans.push_back(source);
+      std::reverse(ans.begin(), ans.end());
+      return std::optional<std::vector<int>>(ans);
+    }
   protected:
     std::unordered_map<std::pair<int, int>, typename TGraph::TValue> distance;
     std::unordered_map<std::pair<int,int>, int> pi;
