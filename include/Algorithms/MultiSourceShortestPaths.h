@@ -48,7 +48,6 @@ class MultiSourceShortestPaths
   protected:
     std::unordered_map<std::pair<int, int>, typename TGraph::TValue> distance;
     std::unordered_map<std::pair<int,int>, int> pi;
-    const TGraph *graph;
 };
 
 #endif
