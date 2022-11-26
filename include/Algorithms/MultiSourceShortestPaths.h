@@ -19,6 +19,7 @@ class MultiSourceShortestPaths
       for(auto edge : edges){
         int source = edge.GetSource();
         int destination = edge.GetDestination();
+        if(source == destination) continue;
         typename TGraph::TValue weight = edge.GetWeight();
         distance.emplace(std::make_pair(source, destination), weight);
         pi.emplace(std::make_pair(source, destination), source);
