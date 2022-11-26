@@ -18,8 +18,8 @@ class MultiSourceShortestPaths
         int source = edge->GetSource();
         int destination = edge->Getdestionation();
         int weight = edge->GetWeight(source, destination);
-        this->distance.emplace((source, destination), weight);
-        this->pi.empalce((source, destination), destination);
+        this->distance.emplace(std::make_pair(source, destination), weight);
+        this->pi.empalce(std::make_pair(source, destination), destination);
       }
       auto vertices = this->graph->GetVertices();
       for(auto vertex : vertices){
@@ -33,7 +33,7 @@ class MultiSourceShortestPaths
     std::optional<std::vector<int>> TryGetShortestPathOf(int source, int destination) const;
   protected:
     std::unordered_map<std::pair<int, int>, typename TGraph::TValue> distance;
-    std::unordered_map<std::pair<int, int>, int> pi;
+    std::unordered_map<std::pair<int,int>, int> pi;
     const TGraph *graph;
 };
 
