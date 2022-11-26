@@ -33,7 +33,7 @@ class MultiSourceShortestPaths
     }
     std::optional<typename TGraph::TValue> TryGetDistanceOf(int source, int destination) const {
       if(!HasPathOf(source, destination)) return std::nullopt;
-      else return std::optional<typename TGraph::TValue>(distance.at((source, destination)));
+      else return std::optional<typename TGraph::TValue>(distance.at(std::make_pair(source, destination)));
     }
     std::optional<std::vector<int>> TryGetShortestPathOf(int source, int destination) const {
       if(!HasPathOf(source, destination)) return std::nullopt;
