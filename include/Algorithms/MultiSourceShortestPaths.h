@@ -11,9 +11,8 @@ class MultiSourceShortestPaths
   public:
     MultiSourceShortestPaths() = delete;
     explicit MultiSourceShortestPaths(const TGraph *graph)
-      :graph(graph)
     {
-      auto edges = this->graph->GetAllEdges();
+      auto edges = graph->GetAllEdges();
       for(auto edge : edges){
         int source = edge->GetSource();
         int destination = edge->Getdestionation();
@@ -21,7 +20,7 @@ class MultiSourceShortestPaths
         distance.emplace(std::make_pair(source, destination), weight);
         pi.emplace(std::make_pair(source, destination), destination);
       }
-      auto vertices = this->graph->GetVertices();
+      auto vertices = graph->GetVertices();
       for(auto vertex : vertices){
         distance.emplace(std::make_pair(vertex, vertex), typename TGraph::TValue());
       }
