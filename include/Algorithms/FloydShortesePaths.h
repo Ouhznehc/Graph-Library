@@ -14,7 +14,7 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
             for(auto mid : vertices){
                 for(auto i : vertices){
                     for(auto j : vertices){
-                        if(this->distance.find(std::make_pair(i, j)) == this->distance.end()){
+                        if(){
                             this->distance.emplace()
                         }
                         else{

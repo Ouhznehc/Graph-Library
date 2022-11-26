@@ -10,7 +10,12 @@ class MultiSourceShortestPaths
   static_assert(std::is_default_constructible_v<typename TGraph::TValue>, "TValue requires default constructor");
   public:
     MultiSourceShortestPaths() = delete;
-    explicit MultiSourceShortestPaths(const TGraph *graph):graph(graph), distance(), pi(){};
+    explicit MultiSourceShortestPaths(const TGraph *graph)
+    :graph(graph), distance(), pi()
+    {
+      auto edges = this->graph->GetAllEdges();
+      
+    };
     virtual ~MultiSourceShortestPaths(){};
   public:
     bool HasPathOf(int source, int destination) const;
