@@ -14,7 +14,12 @@ class MultiSourceShortestPaths
     :graph(graph), distance(), pi()
     {
       auto edges = this->graph->GetAllEdges();
-      
+      for(auto edge : edges){
+        int source = edge->GetSource();
+        int destination = edge->Getdestionation();
+        int weight = edge->GetWeight(source, destination);
+        this->distance.emplace(std::make_pair(source, destination), weight);
+      }
     };
     virtual ~MultiSourceShortestPaths(){};
   public:
