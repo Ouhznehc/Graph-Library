@@ -20,6 +20,7 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
                             // this->distance.emplace(std::make_pair(i, j), dist);
                             // this->pi.emplace(std::make_pair(i, j), mid);
                             this->distance[(i, j)] = dist;
+                            this->pi[(i, j)] = mid;
                         }
                     }
         }
