@@ -22,7 +22,7 @@ class MultiSourceShortestPaths
         typename TGraph::TValue weight = edge.GetWeight();
         if(!HasPathOf(source, destination)) distance[std::make_pair(source, destination)] = weight;
         else distance[std::make_pair(source, destination)] = std::min(weight, distance[std::make_pair(source, destination)]);
-        pi[std::make_pair(source, destination)] = source;
+        pi[std::make_pair(source, destination)] = destination;
       }
       auto vertices = graph->GetVertices();
       for(auto vertex : vertices){
@@ -42,11 +42,10 @@ class MultiSourceShortestPaths
       if(!HasPathOf(source, destination)) return std::nullopt;
       std::vector<int> ans;
       while(source != destination){
-        ans.push_back(destination);
-        destination = pi.at(std::make_pair(source, destination));
+        ans.push_back(source);
+        source = pi.at(std::make_pair(source, destination));
       }
-      ans.push_back(source);
-      std::reverse(ans.begin(), ans.end());
+      ans.push_back(destination);
       return std::optional<std::vector<int>>(ans);
     }
   protected:
