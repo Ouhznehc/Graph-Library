@@ -26,6 +26,7 @@ public:
   virtual bool ContainsEdge(int vertex1, int vertex2) const;
   virtual std::vector<int> GetVertices() const;
   std::vector<Edge> GetEdges() const;
+  std::vector<Edge> GetAllEdges() const;
   std::vector<Edge> GetIncomingEdges(int vertex) const;
   std::vector<Edge> GetOutgoingEdges(int vertex) const;
   virtual int GetDegree(int vertex) const;

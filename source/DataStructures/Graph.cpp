@@ -34,6 +34,10 @@ std::vector<Edge> Graph::GetEdges() const {
     return edges;
 }
 
+std::vector<Edge> Graph::GetAllEdges() const {
+    return Graph::GetEdges();
+}
+
 std::vector<Edge> Graph::GetIncomingEdges(int vertex) const {
     std::vector<Edge> null;
     if(IncomingEdges.find(vertex) != IncomingEdges.end()){
