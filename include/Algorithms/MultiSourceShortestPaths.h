@@ -20,6 +20,10 @@ class MultiSourceShortestPaths
         int weight = edge->GetWeight(source, destination);
         this->distance.emplace(std::make_pair(source, destination), weight);
       }
+      auto vertices = this->graph->GetVertices();
+      for(auto vertex : vertices){
+        this->distance.emplace(std::make_pair(*vertex, *vertex), typename TGraph::TValue());
+      }
     };
     virtual ~MultiSourceShortestPaths(){};
   public:
