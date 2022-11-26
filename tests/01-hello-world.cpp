@@ -19,7 +19,7 @@ struct strict_int {
 };
 static WeightedGraph<strict_int> test_wg1;
 static UndirectedWeightedGraph<strict_int> test_wg2;
-//static ShortestPaths<UndirectedWeightedGraph<strict_int>> a;
+static MultiSourceShortestPaths<UndirectedWeightedGraph<strict_int>> a;
 
 int main()
 {
