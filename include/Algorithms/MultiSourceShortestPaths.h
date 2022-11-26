@@ -11,7 +11,7 @@ class MultiSourceShortestPaths
   public:
     MultiSourceShortestPaths() = delete;
     explicit MultiSourceShortestPaths(const TGraph *graph)
-    :graph(graph), distance(), pi()
+      :graph(graph)
     {
       auto edges = this->graph->GetAllEdges();
       for(auto edge : edges){
