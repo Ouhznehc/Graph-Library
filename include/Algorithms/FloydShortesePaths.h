@@ -11,8 +11,8 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
             :MultiSourceShortestPaths<TGraph>(Graph)
         {
             auto vertices = this->graph->GetVertices();
-            for(auto mid : vertices){
-                for(auto i : vertices){
+            for(auto mid : vertices)
+                for(auto i : vertices)
                     for(auto j : vertices){
                         typename TGraph ::TValue dist = this->distance.at((*i, *mid)) + this->distance.at(*mid, *j);
                         if(!this->HasPathOf(*i, *j) || dist < this->distance.at((*i, *j))){
@@ -20,8 +20,6 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
                             this->pi.emplace((*i, *j), *mid);
                         }
                     }
-                }
-            }
         }
 };
 
