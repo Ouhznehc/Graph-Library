@@ -19,8 +19,8 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
                         if(!this->HasPathOf(i, j) || dist < this->distance.at(std::make_pair(i, j))){
                             // this->distance.emplace(std::make_pair(i, j), dist);
                             // this->pi.emplace(std::make_pair(i, j), mid);
-                            this->distance[(i, j)] = dist;
-                            this->pi[(i, j)] = mid;
+                            this->distance[std::make_pair(i, j)] = dist;
+                            this->pi[std::make_pair(i, j)] = mid;
                         }
                     }
         }
