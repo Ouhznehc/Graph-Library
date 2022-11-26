@@ -18,7 +18,7 @@ class MultiSourceShortestPaths
       auto edges = graph->GetAllEdges();
       for(auto edge : edges){
         int source = edge.GetSource();
-        int destination = edge.Getdestionation();
+        int destination = edge.GetDestionation();
         int weight = edge.GetWeight(source, destination);
         distance.emplace(std::make_pair(source, destination), weight);
         pi.emplace(std::make_pair(source, destination), destination);
