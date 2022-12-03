@@ -10,6 +10,7 @@ class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
         BellmanFordShortestPaths(const TGraph *Graph, int Source)
             : ShortestPaths<TGraph>(Graph, Source){
             if(!this->graph->ContainsVertex(this->source)) return;
+            int vertex_num = this->graph->CountVertices();
             std::vector<int> vertices = this->graph->GetVertices();  
             this->distance[this->source] = typename TGraph::TValue();
             this->pi[this->source] = this->source;
@@ -26,6 +27,10 @@ class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
                     else if(this->distance[to] > this->distance[now] + edge.GetWeight()){
                         this->distance[to] = this->distance[now] + edge.GetWeight();
                         this->pi[to] = now;
+                        release_time[to]++;
+                        if(release_time[to] > vertex_num){
+                            throw NegativeCycleException("Bellman-Ford");
+                        }
                         spfa.push(to);
                     }
                 }
@@ -34,7 +39,7 @@ class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
         virtual ~BellmanFordShortestPaths(){};
     private:
         std::queue<int> spfa;
-
+        std::map<int, int> release_time;
 };
 
 #endif
