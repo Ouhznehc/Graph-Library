@@ -4,7 +4,7 @@
 #include <iostream>
 #include <exception>
 #include <string>
-#include <GLException.h>
+#include "GLException.h"
 
 class NegativeCycleException : public GLException
 {
