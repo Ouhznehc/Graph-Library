@@ -2,6 +2,7 @@
 #define FLOYD_SHORTEST_PATHS
 
 #include "MultiSourceShortestPaths.h"
+#include <Exceptions/NegativeCycleException.h>
 
 template <typename TGraph>
 class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
@@ -21,6 +22,11 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
                             this->pi[std::make_pair(i, j)] = this->pi[std::make_pair(i, mid)];
                         }
                     }
+            for(auto i : vertices){
+                if(this->distance[std::make_pair(i, i)] < typename:TGraph :: TValue()){
+                    throw NegativeCycleException("Floyd");
+                }
+            }
         }
         ~FloydShortestPaths(){}
 };
