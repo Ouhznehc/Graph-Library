@@ -9,6 +9,9 @@
 #include <Algorithms/BellmanFordShortestPaths.h>
 #include <Algorithms/MultiSourceShortestPaths.h>
 #include <Algorithms/FloydShortestPaths.h>
+#include <Exceptions/GLException.h>
+#include <Exceptions/NegativeCycleException.h>
+
 
 using namespace std;
 
