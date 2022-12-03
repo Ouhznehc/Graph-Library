@@ -23,7 +23,7 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
                         }
                     }
             for(auto i : vertices){
-                if(this->distance[std::make_pair(i, i)] < typename::TGraph :: TValue()){
+                if(this->distance[std::make_pair(i, i)] < typename TGraph:: TValue()){
                     throw NegativeCycleException("Floyd");
                 }
             }
