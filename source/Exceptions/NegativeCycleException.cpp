@@ -3,7 +3,7 @@ using namespace std;
 
 #include <Exceptions/NegativeCycleException.h>
 
-NegativeCycleException::NegativeCycleException(const string &s) : message(s) {}
+NegativeCycleException::NegativeCycleException(const string &s) : GLException(s), message(s) {}
 
 string NegativeCycleException::GetMessage() const {
   return message;
