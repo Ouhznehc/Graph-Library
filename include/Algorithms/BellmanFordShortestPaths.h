@@ -3,6 +3,7 @@
 
 #include <Algorithms/ShortestPaths.h>
 #include <DataStructures/WeightedEdge.h>
+#include <Exceptions/NegativeCycleException.h>
 
 template<typename TGraph>
 class BellmanFordShortestPaths : public ShortestPaths<TGraph>{
